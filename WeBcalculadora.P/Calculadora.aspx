@@ -17,7 +17,7 @@
             <h1>Calculadora</h1>
             <br />
 
-            <!-- ====   ==== -->
+            <!-- ==== Entrada de valores para operaciones ==== -->
             <asp:Label ID="Label1" runat="server" Text="Numero 1:"></asp:Label>
             <asp:TextBox ID="tvalor1" runat="server"></asp:TextBox>
             <br />
