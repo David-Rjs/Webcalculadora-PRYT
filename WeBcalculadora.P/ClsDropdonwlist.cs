@@ -2,7 +2,6 @@
 
 namespace WeBcalculadora
 {
-    // Clase para manejar la operación seleccionada en el DropDownList
     public class ClsDropdonwlist
     {
         public string Opcion { get; set; }
@@ -16,11 +15,16 @@ namespace WeBcalculadora
         {
             switch (Opcion)
             {
-                case "Suma": return n1 + n2;
-                case "Resta": return n1 - n2;
-                case "Multiplicacion": return n1 * n2;
-                case "Division": return n2 != 0 ? n1 / n2 : 0;
-                default: return 0;
+                case "Suma":
+                    return n1 + n2;
+                case "Resta":
+                    return n1 - n2;
+                case "Multiplicacion":
+                    return n1 * n2;
+                case "Division":
+                    return (n2 != 0) ? n1 / n2 : 0;
+                default:
+                    return 0;
             }
         }
     }
