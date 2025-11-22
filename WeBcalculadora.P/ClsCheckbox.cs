@@ -2,9 +2,9 @@
 
 namespace WeBcalculadora
 {
-    // Clase, CONSTRUCTOR, GET/SET y MÉTODOS
     public class ClsCheckbox
     {
+        // Campos privados
         private float num1;
         private float num2;
 
@@ -15,7 +15,7 @@ namespace WeBcalculadora
             num2 = n2;
         }
 
-        // Getters y setters
+        // Getters y setters de instancia
         public float Num1
         {
             get { return num1; }
@@ -28,7 +28,6 @@ namespace WeBcalculadora
             set { num2 = value; }
         }
 
-        // Métodos de operación
         public float sumar()
         {
             return num1 + num2;
