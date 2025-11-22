@@ -4,11 +4,11 @@ namespace WeBcalculadora
 {
     public class ClsOperacion
     {
-        // ======== GET/SET ESTÁTICOS (usados en todo el programa) ========
+        // ======== GET/SET ESTÁTICOS ========
         public static float valor1 { get; set; }
         public static float valor2 { get; set; }
 
-        // Getter/Setter ESTÁTICO extra, para que el profe vea el uso
+        // Getter/Setter ESTÁTICO 
         public static float UltimoResultado { get; set; }
 
         // ======== Banderas estáticas para saber qué operación se va a hacer ========
@@ -22,8 +22,7 @@ namespace WeBcalculadora
         public static bool raiz = false;
         public static bool fibonacci = false;
 
-        // ======== GET/SET DE INSTANCIA (para POO) ========
-        // Ejemplo: almacenar un resultado en un objeto, no en la clase
+        // ======== GET/SET DE INSTANCIA ========
         public long ResultadoTemporal { get; set; }
 
         // Constructor por defecto
