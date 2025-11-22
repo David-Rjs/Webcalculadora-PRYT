@@ -30,7 +30,7 @@ namespace WeBcalculadora
         protected void b9_Click(object sender, EventArgs e) { AgregarDigito("9"); }
         protected void b0_Click(object sender, EventArgs e) { AgregarDigito("0"); }
 
-        // ====== MÉTODOS PRIVADOS PARA POO CON CONTROLES ======
+        // ====== MÉTODOS PRIVADOS POO CON CONTROLES ======
 
         private void checkBox()
         {
@@ -82,7 +82,7 @@ namespace WeBcalculadora
             lresultado.Text += " " + texto;
         }
 
-        // ====== BOTÓN CALCULAR (usa todas las clases POO de controles) ======
+        // ====== BOTÓN CALCULAR  ======
         protected void bcalcular_Click(object sender, EventArgs e)
         {
             // Validaciones básicas
@@ -237,7 +237,7 @@ namespace WeBcalculadora
             ClsOperacion.fibonacci = false;
         }
 
-        // ====== BOTONES DE OPERACIONES UNARIAS (activan banderas) ======
+        // ====== BOTONES DE OPERACIONES UNARIAS  ======
         protected void bpot2_Click(object sender, EventArgs e)
         {
             ClsOperacion.sumar = ClsOperacion.restar = ClsOperacion.multiplicar = ClsOperacion.dividir = false;
@@ -274,7 +274,7 @@ namespace WeBcalculadora
         }
     }
 
-    // Enum para operaciones binarias (solo para claridad interna)
+    // Enum para operaciones binarias
     public enum OperacionBinaria
     {
         Suma,
