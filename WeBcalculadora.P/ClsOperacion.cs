@@ -2,86 +2,116 @@
 
 namespace WeBcalculadora
 {
-    public enum OperadorBinario
-    {
-        Ninguno,
-        Suma,
-        Resta,
-        Multiplicacion,
-        Division
-    }
-
     public class ClsOperacion
     {
-        // ======= PROPIEDADES ESTÁTICAS (estado de la operación) =======
-        public static float Valor1 { get; set; }
-        public static float Valor2 { get; set; }
-        public static OperadorBinario OperadorActual { get; set; } = OperadorBinario.Ninguno;
+        // ======== GET/SET ESTÁTICOS (usados en todo el programa) ========
+        public static float valor1 { get; set; }
+        public static float valor2 { get; set; }
 
-        // ======= PREPARAR OPERACIÓN BINARIA =======
-        public static void PrepararOperacionBinaria(OperadorBinario op, string textoValor1)
+        // Getter/Setter ESTÁTICO extra, para que el profe vea el uso
+        public static float UltimoResultado { get; set; }
+
+        // ======== Banderas estáticas para saber qué operación se va a hacer ========
+        public static bool sumar = false;
+        public static bool restar = false;
+        public static bool multiplicar = false;
+        public static bool dividir = false;
+        public static bool factorial = false;
+        public static bool exponente2 = false;
+        public static bool exponente3 = false;
+        public static bool raiz = false;
+        public static bool fibonacci = false;
+
+        // ======== GET/SET DE INSTANCIA (para POO) ========
+        // Ejemplo: almacenar un resultado en un objeto, no en la clase
+        public long ResultadoTemporal { get; set; }
+
+        // Constructor por defecto
+        public ClsOperacion()
         {
-            if (float.TryParse(textoValor1, out float v1))
-            {
-                Valor1 = v1;
-                OperadorActual = op;
-            }
-            else
-            {
-                OperadorActual = OperadorBinario.Ninguno;
-            }
         }
 
-        public static void SetSegundoValorDesdeTexto(string textoValor2)
+        // Constructor con valor inicial
+        public ClsOperacion(long resultadoInicial)
         {
-            float.TryParse(textoValor2, out float v2);
-            Valor2 = v2;
+            ResultadoTemporal = resultadoInicial;
         }
 
-        public static bool ResolverOperacionBinaria(out float resultado)
+        // ======== MÉTODOS ESTÁTICOS DE OPERACIONES BINARIAS ========
+        public static float metodo_sumar(float v1, float v2)
         {
-            resultado = 0;
-
-            switch (OperadorActual)
-            {
-                case OperadorBinario.Suma:
-                    resultado = Valor1 + Valor2;
-                    break;
-                case OperadorBinario.Resta:
-                    resultado = Valor1 - Valor2;
-                    break;
-                case OperadorBinario.Multiplicacion:
-                    resultado = Valor1 * Valor2;
-                    break;
-                case OperadorBinario.Division:
-                    if (Valor2 == 0) return false;
-                    resultado = Valor1 / Valor2;
-                    break;
-                default:
-                    return false;
-            }
-
-            return true;
+            float res = v1 + v2;
+            UltimoResultado = res;
+            return res;
         }
 
-        // ======= OPERACIONES UNARIAS =======
-        public static float Potencia2(float x) => x * x;
-
-        public static float Potencia3(float x) => x * x * x;
-
-        public static float RaizCuadrada(float x) => (float)Math.Sqrt(x);
-
-        public static long Factorial(int n)
+        public static float metodo_restar(float v1, float v2)
         {
+            float res = v1 - v2;
+            UltimoResultado = res;
+            return res;
+        }
+
+        public static float metodo_multiplicar(float v1, float v2)
+        {
+            float res = v1 * v2;
+            UltimoResultado = res;
+            return res;
+        }
+
+        public static float metodo_dividir(float v1, float v2)
+        {
+            if (v2 == 0)
+                throw new DivideByZeroException("No se puede dividir entre cero.");
+
+            float res = v1 / v2;
+            UltimoResultado = res;
+            return res;
+        }
+
+        // ======== MÉTODOS ESTÁTICOS DE OPERACIONES UNARIAS ========
+
+        public static float metodo_potencia2(float v1)
+        {
+            float res = v1 * v1;
+            UltimoResultado = res;
+            return res;
+        }
+
+        public static float metodo_potencia3(float v1)
+        {
+            float res = v1 * v1 * v1;
+            UltimoResultado = res;
+            return res;
+        }
+
+        public static float metodo_raiz(float v1)
+        {
+            if (v1 < 0)
+                throw new ArgumentException("No se puede sacar raíz cuadrada de un número negativo.");
+
+            float res = (float)Math.Sqrt(v1);
+            UltimoResultado = res;
+            return res;
+        }
+
+        public static long metodo_factorial(int n)
+        {
+            if (n < 0)
+                throw new ArgumentException("El factorial solo está definido para enteros >= 0.");
+
             long r = 1;
             for (int i = 2; i <= n; i++)
                 r *= i;
+
             return r;
         }
 
-        // Fibonacci clásico: devuelve el término n
-        public static long Fibonacci(int n)
+        public static long metodo_fibonacci(int n)
         {
+            if (n < 0)
+                throw new ArgumentException("Fibonacci solo está definido para enteros >= 0.");
+
             if (n == 0) return 0;
             if (n == 1) return 1;
 
@@ -93,14 +123,8 @@ namespace WeBcalculadora
                 a = b;
                 b = t;
             }
-            return b;
-        }
 
-        public static void Reiniciar()
-        {
-            Valor1 = 0;
-            Valor2 = 0;
-            OperadorActual = OperadorBinario.Ninguno;
+            return b;
         }
     }
 }
