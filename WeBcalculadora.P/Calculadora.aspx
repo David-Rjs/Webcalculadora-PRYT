@@ -70,8 +70,8 @@
             </div>
 
             <!-- ========================================================= -->
-            <!--   CONTROLES POO OCULTOS (EL PROFE LOS VE EN EL CÓDIGO)   -->
-            <!--   PERO NO SE MUESTRAN EN LA INTERFAZ GRÁFICA.           -->
+            <!--   CONTROLES POO OCULTOS -->
+            <!--   NO SE MUESTRAN EN LA INTERFAZ GRÁFICA. -->
             <!-- ========================================================= -->
             <asp:Panel ID="PanelPOO" runat="server" Visible="false">
 
