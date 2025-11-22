@@ -4,7 +4,7 @@ namespace WeBcalculadora
 {
     public class ClsRadionButton
     {
-        // Propiedad de instancia, por si se quiere guardar la última operación
+        // Propiedad de instancia
         public string UltimaOperacion { get; set; }
 
         public ClsRadionButton()
